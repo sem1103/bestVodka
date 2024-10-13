@@ -1,0 +1,328 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    padding: 5px 25px;
+    width: 100%;
+    backdrop-filter: blur(25px);
+    transition: all .4s ease-in-out;
+    box-shadow: 0 0 10px 2px #ffffff;
+
+    &.fixed{
+        box-shadow: 0 0 10px 2px #589da8;
+        background: #ffffff94;
+        & img{
+            width: 80px;
+        }
+    }
+
+    & nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        & ul {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all .4s ease-in-out;
+            & li {
+                margin: 0 0 0 clamp(15px, 2vw, 35px);
+                &:first-child{
+                    margin: 0;
+                }
+                & a{
+                    white-space: nowrap;
+                    font-weight: 500;
+                }
+            }
+
+            & a {
+                color: #273948;
+                font: 16px Montserrat;
+
+            }
+        }
+
+        & .logo {
+            margin: 0 5px 0 25px;
+            & img{
+                transition: all .4s ease-in-out;
+            }
+        }
+    }
+}
+
+.lang__switch{
+    border-left: 1px solid #273948;
+    padding: 0 0 0 15px;
+    opacity: .7;
+    transition: all .4s ease-in-out;
+    position: relative;
+    &:hover{
+        opacity: 1;
+        & ul.langs{
+            max-height: 300px;
+            padding: 10px;
+        }
+    }
+    & button{
+        display: flex;
+        align-items: center;
+        &::before{
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin: 0 5px 0 0 ;
+            border: 1px solid #fff;
+            border-radius: 50%;
+        }
+        &.az::before{
+            background: url(./../../../public/assets/img/flags/az.png) center/cover;
+        }
+
+        &.ru::before{
+            background: url(./../../../public/assets/img/flags/ru.png) center/cover;
+        }
+
+        &.en::before{
+            background: url(./../../../public/assets/img/flags/en.png) center/cover;
+        }
+    }
+
+    & ul.langs{
+        position: absolute;
+        top: 130%;
+        left: 0;
+        flex-direction: column;
+        background: #fff;
+        border-radius: 15px;
+        max-height: 0;
+        transition: all .4s ease-in-out;
+        overflow: hidden;
+        & li{
+            margin: 0 0 10px 0;
+            border: 1px solid transparent;
+            transition: all .4s ease-in-out;
+            padding: 3px 5px;
+            border-radius: 8px;
+            &:last-child{
+                margin: 0;
+            }
+            &:hover{
+                border-color: #589da8;
+                box-shadow: 0 0 3px #589da8;
+            }
+        }
+
+    }
+    
+}
+
+
+
+.burger {
+    display: none;
+}
+.burger__btn {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+.stick {
+    width: 30px;
+    box-sizing: border-box;
+    height: 3px;
+    background: #8c8c8c;
+    border: 0;
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: all .3s ease-in-out;
+    margin: 0;
+    transform-origin: center center;
+}
+.active__burger .stick:first-child {
+    animation-name: firstStick;
+    animation-delay: 1.2s;
+    animation-duration: .9s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+    top: 0;
+}
+.stick:nth-child(2) {
+    top: 50%;
+    transform: translate(0, -50%);
+}
+.stick:last-child {
+    bottom: 0;
+    top: initial;
+    animation-delay: .75s;
+    animation-duration: .9s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+}
+.active__burger .stick:nth-child(2) {
+    width: 3px;
+    transition: width .4s ease-in-out;
+    animation-name: ball;
+    animation-duration: .9s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    animation-delay: .4s;
+}
+.active__burger .stick:last-child {
+    animation-name: lastStick;
+}
+.deactive__burger .stick:first-child {
+    animation-name: deactiveOne;
+    animation-delay: 0ms;
+    animation-duration: 500ms;
+}
+.deactive__burger .stick:last-child {
+    animation-name: deactiveTwo;
+    animation-delay: 0ms;
+    animation-duration: 500ms;
+}
+@keyframes deactiveOne {
+    0% {
+        top: 50%;
+        transform: rotate(-45deg) translateY(-50%);
+    }
+    100% {
+        top: 0;
+        transform: rotate(0) translateY(0);
+    }
+}
+@keyframes deactiveTwo {
+    0% {
+        bottom: 50%;
+        transform: rotate(45deg) translateY(50%);
+    }
+    100% {
+        bottom: 0;
+        transform: rotate(0) translateY(0);
+    }
+}
+@keyframes ball {
+    0% {
+        top: 50%;
+    }
+    20% {
+        top: 100%;
+    }
+    50% {
+        top: 0;
+    }
+    100% {
+        top: 110%;
+    }
+}
+@keyframes firstStick {
+    0% {
+        top: 0;
+    }
+    20% {
+        top: 50%;
+    }
+    50% {
+        transform: rotate(-56deg) translateY(-50%);
+    }
+    80% {
+        transform: rotate(-36deg) translateY(-50%);
+    }
+    100% {
+        top: 50%;
+        transform: rotate(-45deg) translateY(-50%);
+        box-shadow: 0 0 3px 1px var(--red);
+    }
+}
+@keyframes lastStick {
+    0% {
+        bottom: 0;
+    }
+    20% {
+        bottom: 50%;
+    }
+    50% {
+        transform: rotate(56deg) translateY(50%);
+    }
+    80% {
+        transform: rotate(36deg) translateY(50%);
+    }
+    100% {
+        bottom: 50%;
+        transform: rotate(45deg) translateY(50%);
+        box-shadow: 0 0 3px 1px var(--red);
+    }
+}
+@media only screen and (max-width: 1000px) {
+    .burger {
+        display: flex;
+        z-index: 5;
+        top: 40px;
+        position: fixed;
+        right: 25px;
+        transform: translateY(-50%);
+    }
+    .header {
+        max-height: 80px;
+        height: 100%;
+        background: #ffffff94;
+
+       & nav{
+        justify-content: center;
+        & .logo{
+            margin: 0;
+        }
+       }
+        & nav > ul{
+            position: absolute;
+            left: -100%;
+            top: 60%;
+            flex-direction: column;
+            transform: translate(0%, -50%);
+            align-items: start;
+            justify-content: start;
+            overflow: auto;
+            height: 100%;
+            padding: 20px;
+            & > li, & > li:first-child{
+                margin: 0  0 20px 0 ;
+            }
+            & .lang__switch{
+                border: 0;
+                margin: 0 0 20px 0;
+
+                & .langs{
+                    top: initial;
+                    bottom: 5px;
+                    left: 120%;
+                    border-radius: 15px 15px 15px 0;
+                }
+            }
+        }
+      
+    }
+    .active__burger {
+        overflow: hidden;
+        & .header {
+            max-height: 700px;
+            & nav ul{
+                left: 0;
+            }
+        }
+
+       & .stick{
+        background: #9d4646;
+       }
+    }
+    
+    
+   
+}

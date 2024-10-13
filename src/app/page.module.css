@@ -1,0 +1,437 @@
+.intro {
+  min-height: 100vh;
+  padding: 122px 25px 0 25px;
+  position: relative;
+  perspective: 1000px;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('./../../public/assets/img/introBg.webp') top/cover;
+    background-attachment: fixed;
+
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('./../../public/assets/img/musk.png') top/cover;
+    inset: -5vw;
+    transform: rotateX(var(--moveY)) rotateY(var(--moveX));
+  }
+}
+
+.intro__container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* transform-style: preserve-3d; */
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 35%;
+    right: -10%;
+    width: 90px;
+    height: 110px;
+    background: url('./../../public/assets/img/birds.gif') center/contain;
+    animation-name: animBirdsRight;
+    animation-duration: 12s;
+    animation-iteration-count: 2;
+    animation-delay: 4s;
+    animation-timing-function: ease-out;
+
+  }
+
+  &::after {
+    animation-name: animBirdsLeft;
+    animation-delay: 9s;
+    right: initial;
+    left: -10%;
+
+
+  }
+
+  & .prod__img,
+  & .prod__name,
+  & .prod__desc {
+    position: relative;
+    z-index: 2;
+  }
+
+
+  .prod__img {
+    & img {
+      filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.6));
+
+    }
+  }
+
+
+  & .prod__name {
+    font: 700 54px Oswald;
+    text-transform: uppercase;
+    position: absolute;
+    top: 150px;
+    left: 45px;
+    color: #23323a;
+    max-width: 550px;
+
+    & span {
+      font-size: 34px;
+      text-transform: none;
+    }
+  }
+
+  & .prod__desc {
+    font: 400 20px Oswald;
+    position: absolute;
+    bottom: 350px;
+    right: 45px;
+    max-width: 350px;
+    color: #23323a;
+  }
+
+  & .prod__model {
+    flex: 1;
+  }
+}
+
+@keyframes animBirdsRight {
+  0% {
+    top: 35%;
+    right: -10%;
+    scale: 2;
+  }
+
+  100% {
+    top: 0;
+    right: 75%;
+    scale: .4;
+  }
+
+}
+
+@keyframes animBirdsLeft {
+  0% {
+    top: 35%;
+    left: -10%;
+    scale: 1.5;
+  }
+
+  100% {
+    top: 0;
+    left: 75%;
+    scale: .2;
+  }
+
+}
+
+
+.our__prods {
+  margin: 30px auto;
+}
+
+.slider__item {
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  padding: 45px 30px 20px 60px;
+  border-radius: 26px;
+  transition: all .4s ease-in-out;
+
+  & .item__info {
+    flex-basis: 40%;
+    font-family: Oswald, Arial;
+  }
+
+  & .prod__type {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    transition: all .4s ease-in-out;
+    opacity: .8;
+
+    &::before {
+      content: '';
+      width: 30px;
+      height: 2px;
+      display: inline-block;
+      background-color: #626262;
+      margin: 0 10px 0 0;
+      transition: inherit;
+    }
+  }
+
+  & .prod__name {
+    font-size: 40px;
+    font-weight: 500;
+    color: #333;
+    line-height: 1.2;
+    margin: 15px 0 30px 0;
+    text-transform: uppercase;
+  }
+
+  & .prod__desc {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+  }
+
+  & .item__img {
+    height: 441px;
+    flex: 1;
+    perspective: 500px;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      scale: 1.1;
+      transition: all .6s ease-in-out;
+      transform: rotate(12deg);
+      opacity: 0.5;
+
+    }
+  }
+
+  & button {
+    font-size: 14px;
+    margin: 10px 0 0 0;
+    position: relative;
+    padding: 3px 0;
+    font-weight: 500;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #333;
+      transition: all .3s ease-in-out;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+}
+
+.our__slogan {
+  position: relative;
+  height: 200vh;
+  padding: 65px 0;
+
+  & h2 {
+    position: sticky;
+    top: 150px;
+    z-index: 2;
+    text-align: center;
+    font-size: clamp(24px, 5vw, 60px);
+    font-weight: 600;
+    z-index: 4;
+    display: block;
+    width: max-content;
+    margin: 0 auto;
+    background: #ffffffb9;
+    padding: 15px 20px;
+    border-radius: 26px;
+    opacity: .8;
+    box-shadow: 0 0 10px 2px #fff;
+
+    & span {
+      color: #009844;
+    }
+  }
+
+  .musk {
+
+    &::after,
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 3;
+      width: 100%;
+      height: 100vh;
+
+      background: url('./../../public/assets/img/leftMusk.png') center/cover;
+    }
+
+    &::before {
+      background: url('./../../public/assets/img/rightMusk.png') center/cover;
+      top: initial;
+      bottom: 0;
+    }
+  }
+
+  &::after,
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: url('./../../public/assets/img/winterForest.jpg') center/cover;
+    box-shadow: 0 0 20px 20px #eff3f3 inset;
+    background-attachment: fixed;
+
+  }
+
+  &::before {
+    background: url('./../../public/assets/img/winterForest2.jpg') bottom/cover;
+    top: initial;
+    bottom: 0;
+    background-attachment: fixed;
+
+  }
+}
+
+
+.about__us {
+  padding: 25px 10px;
+  font: 20px/1.5 Oswald;
+  position: relative;
+  margin: 20px auto 0 auto;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+
+  &>div {
+    width: 60%;
+  }
+
+  & h2 {
+    padding: 0 ;
+  }
+
+  & p {
+    max-width: 700px;
+    position: relative;
+
+    z-index: 1;
+    padding: 25px;
+  }
+
+  & h3 {
+    font: 64px/1.1 Oswald;
+    color: rgb(35, 50, 58);
+    flex: 1;
+    z-index: 1;
+    position: relative;
+    text-shadow: 0 0 10px #fff;
+    & span{
+      position: absolute;
+      font-size: 440px;
+      top: 0;
+      line-height: .8;
+      z-index: -1;
+      opacity: .7;
+    }
+  }
+}
+
+.certificates {
+  padding: 25px 10px;
+}
+.certificate__slider{
+  margin: 10px 0 ;
+  text-align: center;
+  & img{
+    max-width: 320px;
+    box-shadow: 0 0 10px #747474;
+  }
+  & .cert__info{
+    font: 24px Oswald;
+    text-align: center;
+  }
+  & .item{
+    padding: 25px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    height: 100%;
+  }
+ 
+}
+
+
+
+
+/*Media*/
+
+@media only screen and (width < 1200px) {
+  .intro__container {
+    & .prod__name {
+      font-size: 34px;
+      top: 120px;
+      max-width: 300px;
+      text-shadow: 0 0 10px #fff;
+    }
+
+    & .prod__desc {
+      font-size: 18px;
+      text-shadow: 0 0 10px #fff;
+      background: #ffffffab;
+      padding: 20px 15px;
+      border-radius: 16px;
+      bottom: 300px;
+    }
+
+    & .prod__img {
+      max-width: 190px;
+
+      & img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media only screen and (width < 920px) {
+
+  .intro__container {
+    flex-direction: column;
+
+    & .prod__name {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    & .prod__name {
+      position: static;
+    }
+
+    & .prod__desc {
+      bottom: 100px;
+    }
+  }
+
+  .about__us {
+    flex-direction: column;
+
+    & p {
+      margin: 0;
+      max-width: 100%;
+
+      font-size: 18px;
+    }
+
+  }
+}
