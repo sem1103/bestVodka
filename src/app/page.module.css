@@ -37,7 +37,7 @@
     content: '';
     position: absolute;
     top: 35%;
-    right: -10%;
+    right: -100%;
     width: 90px;
     height: 110px;
     background: url('./../../public/assets/img/birds.gif') center/contain;
@@ -53,7 +53,7 @@
     animation-name: animBirdsLeft;
     animation-delay: 9s;
     right: initial;
-    left: -10%;
+    left: -100%;
 
 
   }
@@ -106,7 +106,7 @@
 @keyframes animBirdsRight {
   0% {
     top: 35%;
-    right: -10%;
+    right: -20%;
     scale: 2;
   }
 
@@ -121,7 +121,7 @@
 @keyframes animBirdsLeft {
   0% {
     top: 35%;
-    left: -10%;
+    left: -20%;
     scale: 1.5;
   }
 
@@ -464,10 +464,24 @@
  
 }
 
+
+
 @media only screen and (width < 500px){
   .about__us{
     & h3 span{
      position: static;
+    }
+  }
+
+  .our__slogan {
+    height: 80vh;
+    &::after, &::before{
+      height: 40vh;
+    }
+    & .musk{
+      &::after, &::before{
+        height: 40vh;
+      }
     }
   }
 }
