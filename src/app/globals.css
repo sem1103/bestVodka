@@ -198,7 +198,7 @@ button {
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     text-shadow: 0 0 10px #fff;
-    font-size: 240px;
+    font: clamp(140px, 50vw, 240px) Smooch;
     color: #207d8b;
   }
 
@@ -224,9 +224,14 @@ button {
     bottom: 50%;
     opacity: 1;
   }
-  74%{
+  65%{
     bottom: 50%;
     opacity: 1;
+  }
+  80%{
+    opacity: 0;
+    bottom: 50%;
+
   }
   100%{
     opacity: 0;
