@@ -4,26 +4,28 @@ import s from './page.module.css'
 import Header from '@/components/Header/Header';
 import { useRef, useEffect, useState, useCallback } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Lightbox from 'react-awesome-lightbox';
-import 'react-awesome-lightbox/build/style.css';
+
 import Contacts from '@/components/Contacts/Contacts';
+import ImgLightBox from '@/components/ImgLightBox/ImgLightBox';
+import Footer from '@/components/Footer/Footer';
 
 
 
 export default function Home() {
   const introRef = useRef(null);
-  const [currentIndex, setCurrentIndex] = useState(null)
+  const [currentInd, setCurrentInd] = useState(null)
+  const [isShow, SetIsShow] = useState(false);
 
   const [headerFixed, setHeaderFixed] = useState(false)
 
-
-  const images = [
+  const certImages = [
     '/assets/img/certificates/1.jpg',
     '/assets/img/certificates/2.jpg',
     '/assets/img/certificates/3.jpg',
     '/assets/img/certificates/4.jpg',
+  ]
 
-  ];
+  
 
 
 
@@ -71,12 +73,19 @@ export default function Home() {
         </h2>
 
         <Swiper
-          spaceBetween={50}
-          slidesPerView={1.65}
+          spaceBetween={15}
+          slidesPerView={1}
           onSlideChange={() => console.log('slide change')}
           onSwiper={(swiper) => console.log(swiper)}
           className='our_prod__slider'
           loop={true}
+          breakpoints={{
+            1100: {
+              slidesPerView: 1.65,
+              spaceBetween: 50
+
+            }
+          }}
         >
           <SwiperSlide>
             <div className={s.slider__item}>
@@ -166,27 +175,27 @@ export default function Home() {
       <section className={`${s.certificates} container`}>
         <h2>Сертификаты</h2>
         <div className={s.certificate__slider}>
-          {currentIndex !== null && (
-            <Lightbox
-              images={images.map((src) => ({ url: src }))}
-              startIndex={currentIndex}
-              onClose={() => setCurrentIndex(null)}
-              doubleClickZoom={1}
-            />
-          )}
-          <Swiper
-            spaceBetween={20}
-            slidesPerView={2.5}
-            loop={true}
-            className='certificate__slider'
+          <ImgLightBox images={certImages} currentInd={currentInd} isShow={isShow} SetIsShow={SetIsShow} />
 
-            onClick={(swiper, event) => {
-              console.log(`Clicked slide index: ${swiper.clickedIndex}`);
+
+          <Swiper
+            spaceBetween={10}
+            slidesPerView={1.1}
+            className='certificate__slider'
+            onClick={(swiper) => {              
+              setCurrentInd(swiper.clickedIndex);
+              SetIsShow(true);
             }}
 
+            breakpoints={{
+              800: {
+                slidesPerView: 2.5,
+                spaceBetween: 20
+              }
+            }}
           >
             <SwiperSlide >
-              <div className={s.item} onClick={() => setCurrentIndex(0)}>
+              <div className={s.item}>
                 <div className={s.cert__img} >
                   <img src="/assets/img/certificates/1.jpg" alt="" />
                 </div>
@@ -196,7 +205,7 @@ export default function Home() {
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className={s.item} onClick={() => setCurrentIndex(1)}>
+              <div className={s.item} >
                 <div className={s.cert__img}>
                   <img src="/assets/img/certificates/2.jpg" alt="" />
                 </div>              <h4 className={s.cert__info}>
@@ -206,7 +215,7 @@ export default function Home() {
             </SwiperSlide>
 
             <SwiperSlide>
-              <div className={s.item} onClick={() => setCurrentIndex(2)}>
+              <div className={s.item} >
                 <div className={s.cert__img}>
                   <img src="/assets/img/certificates/3.jpg" alt="" />
                 </div>              <h4 className={s.cert__info}>
@@ -216,7 +225,7 @@ export default function Home() {
             </SwiperSlide>
 
             <SwiperSlide>
-              <div className={s.item} onClick={() => setCurrentIndex(3)}>
+              <div className={s.item} >
                 <div className={s.cert__img}>
                   <img src="/assets/img/certificates/4.jpg" alt=""  />
                 </div>              <h4 className={s.cert__info}>
@@ -230,10 +239,9 @@ export default function Home() {
 
         </div>
       </section>
-
           <Contacts />
-     
 
+          <Footer />
 
     </>
   );

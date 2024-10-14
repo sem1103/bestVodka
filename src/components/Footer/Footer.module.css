@@ -1,0 +1,112 @@
+#footer {
+    background: rgb(110, 170, 179);
+    background: linear-gradient(180deg, rgba(110, 170, 179, 1) 28%, rgba(32, 125, 139, 1) 100%, rgba(198, 222, 225, 1) 100%);
+    padding: clamp(25px, 3vw, 50px);
+    color: #fff;
+    font-family: Oswald;
+
+    & > div{
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+    }
+
+    & h4 {
+        font-size: clamp(18px, 3vw, 20px);
+        border-bottom: 1px solid #ffffffb2;
+        display: table;
+        padding: 0 0 5px 0;
+    }
+    & h6{
+        text-align: center;
+        margin: 25px 0 0 0;
+    }
+
+    & ul{
+        margin: 15px 0 0 0;
+        & li{
+            margin: 0  0 10px 0;
+            & a{
+                font-weight: 300;
+                letter-spacing: 1px;
+            }
+        }
+    }
+  }
+  
+
+  
+  
+  .socialLinks, .flexCenter {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin: 15px 0 0 0;
+  }
+  .socialLinks span{
+    font: 14px Oswald;
+    text-align: left;
+  }
+  
+  .socialBtn {
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    font-family: 'Titillium Web', sans-serif;
+    color: #333;
+    border-radius: 10px;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+    background: white;
+    margin: 5px;
+    transition: 0.3s;
+    justify-content: center;
+  }
+  
+  .socialBtn svg {
+    height: 34px;
+    width: 34px;
+  }
+  
+  .socialBtn span {
+    width: 0px;
+    overflow: hidden;
+    transition: 0.3s;
+    text-align: center;
+    margin-left: 5px;
+  }
+  
+  .socialBtn:hover {
+    width: 150px;
+    border-radius: 5px;
+  }
+  
+  .socialBtn:hover span {
+    padding: 2px;
+    width: 80px;
+  }
+  
+  #twitter svg {
+    fill: #1da1f2;
+  }
+  
+  #linkedin svg {
+    background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4);
+    border-radius: 6px;
+}
+  
+  #github svg {
+    background: #00d757;
+   
+    border-radius: 50%;
+  }
+  
+
+  @media only screen and (width < 1000px){
+    #footer{
+        & >div{
+            flex-wrap: wrap;
+            gap: 25px;
+
+        }
+    }
+  }

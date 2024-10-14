@@ -142,7 +142,7 @@
   display: flex;
   justify-content: space-between;
   background: #fff;
-  padding: 45px 30px 20px 60px;
+  padding: clamp(25px, 3vw, 45px) 30px 20px clamp(25px, 3vw, 60px);
   border-radius: 26px;
   transition: all .4s ease-in-out;
 
@@ -170,7 +170,7 @@
   }
 
   & .prod__name {
-    font-size: 40px;
+    font-size: clamp(25px, 3vw, 40px);
     font-weight: 500;
     color: #333;
     line-height: 1.2;
@@ -189,6 +189,7 @@
 
   & .item__img {
     height: 441px;
+
     flex: 1;
     perspective: 500px;
 
@@ -337,7 +338,7 @@
     text-shadow: 0 0 10px #fff;
     & span{
       position: absolute;
-      font-size: 440px;
+      font-size: clamp(120px, 30vw, 420px);
       top: 0;
       line-height: .8;
       z-index: -1;
@@ -433,5 +434,40 @@
       font-size: 18px;
     }
 
+  }
+}
+
+
+
+@media only screen and (width < 1000px){
+  .about__us{
+    &>div{
+      width: 100%;
+    }
+  }
+  
+
+
+  .our__prods {
+    & .item__img{
+      height: 220px;
+      min-width: 120px;
+    }
+    & .item__info{
+      flex-basis: 60%;
+    }
+    & .slider__item{
+      padding-bottom: 40px;
+    }
+  }
+
+ 
+}
+
+@media only screen and (width < 500px){
+  .about__us{
+    & h3 span{
+     position: static;
+    }
   }
 }

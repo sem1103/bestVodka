@@ -196,9 +196,13 @@ h2{
   box-shadow: 0 0 10px 1px #000000;
 }
 
+div.react-transform-wrapper{
+  overflow: initial;
+}
+
 /*Slider*/
 div.our_prod__slider{
-  padding: 35px 45px;
+  padding: 35px clamp(25px, 3vw, 45px);
   & .swiper-wrapper{
     max-width: 1250px;
     margin: 0 auto;

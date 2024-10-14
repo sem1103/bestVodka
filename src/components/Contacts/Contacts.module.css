@@ -1,17 +1,50 @@
 .contacts{
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    max-width: 800px;
-    padding: 15px 10px;
-    margin: 0 auto;
+    
+    padding: 25px 10px;
+    background: rgb(110,170,179);
+    background: linear-gradient(0deg, rgba(110,170,179,1) 28%, rgba(32,125,139,1) 100%, rgba(198,222,225,1) 100%);    margin: 25px 0 0 0;
     font-family: Oswald;
     text-align: center;
-
+    & .container{
+        margin: 0 auto;
+        max-width: 1000px;
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        & > div{
+            width: calc((100% - 24px) / 3);
+            color: #fff;
+        }
+    }
+    & svg{
+        min-height: 71px;
+        margin: 0 0 15px 0 ;
+    }
     & h3{
         font-size: clamp(16px,3vw,28px);
+        font-weight: 500;
+        margin: 0 0 15px 0;
     }
-    & > div{
-        width: calc((100% - 24px) / 3);
+  
+    & p, & a{
+        font-size: clamp(14px,2vw,20px);
+        font-weight: 300;
+        line-height: 1.5;
+    }
+}
+
+
+@media only screen and (width < 1000px){
+    .contacts{
+        & svg{
+            scale: .8;
+        }
+        & .container{
+            flex-wrap: wrap;
+            & > div{
+                width: 100%;
+                margin: 0 0 15px 0;
+            }
+        }
     }
 }

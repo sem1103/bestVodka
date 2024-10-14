@@ -1,0 +1,31 @@
+.wrapper{
+    position: fixed;
+    inset: 0;
+    backdrop-filter: blur(15px);
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00000050;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .4s ease-in-out;
+    &.show{
+        pointer-events: auto;
+        opacity: 1;
+    }
+    & > div{
+        cursor: grab;
+    }
+    
+    & .close{
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        box-shadow: 0 0 10px #fff;
+        border-radius: 50%;
+        width: 34px;
+        height: 34px;
+        z-index: 99;
+    }
+}
